@@ -14,9 +14,6 @@ group :test do
 	gem 'database_cleaner'     # ogni run "ripulisce" il database per i test di Cucumber
 	gem 'capybara'	           # fa in modo che Cucumber si comporti come un web browser
 	gem 'launchy'	           # per debug di user stories
-
-	gem 'rspec-rails'
-	gem 'rspec'
 end
 
 gem 'devise'				# per l'autenticazione 
