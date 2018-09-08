@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -23,7 +22,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-=======
-# Travelling-People
-Social network for travel-loving people.
->>>>>>> 6cbfe3f45a0a2df98c759755cc2f03a863614e58
