@@ -1,3 +1,0 @@
-%h2 Nome utente: #{current_user.username}
-
-= button_to 'Log out', '#'
