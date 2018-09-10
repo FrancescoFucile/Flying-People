@@ -281,7 +281,7 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
-	config.omniauth :google_oauth2, Rails.application.secrets.GoogleClientID, Rails.application.secrets.GoogleClientSecret, access_type: "online"
+	config.omniauth :google_oauth2, "112819948025-ulghaop1f7sec8n5shrtqbb7upmcs5tr.apps.googleusercontent.com", "okPNDnIbqTWq2eymKB-yFAhU", access_type: "online"
 
   # ==> Turbolinks configuration
   # If your app is using Turbolinks, Turbolinks::Controller needs to be included to make redirection work correctly:

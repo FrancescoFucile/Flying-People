@@ -1,0 +1,13 @@
+%h1 Travelling-People
+
+- if current_user
+	= render :partial => 'user_profile'
+		
+- else
+	= button_to 'Registrati', new_user_registration_path, :method => :get
+	= button_to 'Accedi', new_user_session_path, :method => :get
+	= button_to 'Accedi con Google', user_google_oauth2_omniauth_callback_path, :method => :get
+
+= render :partial => 'footer_home_page'
+
+
