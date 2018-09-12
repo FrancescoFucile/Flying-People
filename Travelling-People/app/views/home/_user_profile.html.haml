@@ -1,5 +1,10 @@
 %h2 Nome utente: #{current_user.username}
 
+%h2 #{current_user.descrizione}
+
 = button_to 'Log out', destroy_user_session_path, :method => :delete
 
-= image_tag current_user.fotoProfilo.url if !current_user.fotoProfilo.file.nil?
+- if current_user.fotoProfilo?
+	= image_tag current_user.fotoProfilo.url
+- else
+	= image_tag current_user.fotoProfilo.default_url
