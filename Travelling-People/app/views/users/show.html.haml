@@ -1,0 +1,21 @@
+%h1 Travelling-People
+
+%h2 Profilo di #{@user.username}
+%h2 #{@user.descrizione}
+
+- if @user.fotoProfilo?
+	= image_tag @user.fotoProfilo.url
+- else
+	= image_tag @user.fotoProfilo.default_url
+
+%hr/
+
+%h1 link report utente
+%h1 link foto utente
+
+
+
+
+
+
+

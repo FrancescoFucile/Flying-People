@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
 	resources :users
 
+	get 'users/search', to: 'users#search'
+
 	root :to => 'home#index'
 
 end

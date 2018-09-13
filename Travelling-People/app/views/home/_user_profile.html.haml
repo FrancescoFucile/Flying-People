@@ -8,3 +8,9 @@
 	= image_tag current_user.fotoProfilo.url
 - else
 	= image_tag current_user.fotoProfilo.default_url
+
+%hr/
+
+= form_tag users_search_path, :method => :get do
+	= text_field :user, :username, placeholder: "Cerca utente", required: true
+	= submit_tag "Cerca", name: nil
