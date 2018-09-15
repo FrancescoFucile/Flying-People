@@ -1,0 +1,12 @@
+<div>
+  Chat con <strong><%= conversation.with(current_user).username %></strong>
+  <br>
+  <em><%= conversation.messages.last.body.truncate(50) %></em>
+  <br>
+  <%= link_to 'Vedi conversazione', conversation_path(conversation) %>
+	<% if !conversation.unread_message_count(current_user).zero? %>
+	  (messaggi non letti: <%= conversation.unread_message_count(current_user) %>)
+  <% end %>	
+  <hr>
+</div>
+

@@ -1,0 +1,16 @@
+<h1>Chat con <%= @conversation.with(current_user).username %></h1>
+
+<div>
+	<%= render @conversation.messages %>
+</div>
+
+<%= form_for @message do |f| %>
+	<%= hidden_field_tag 'conversation_id', @conversation.id %>
+	<%= f.label :Inserisci_messaggio %>
+	<br>
+  <%= f.text_area :body %>
+	<br>
+  <%= f.submit 'Invia'%>
+<% end %>
+
+<%= link_to 'Indietro', conversations_path %>

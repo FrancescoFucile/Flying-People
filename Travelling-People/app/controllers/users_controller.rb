@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
 
+	def index
+		@users = User.where.not(id: current_user.id).order('username')
+	end
+
 	def search
-		#@user = User.find_by(username: params[:user][:username])
-		#redirect_to user_path(@user)
 	end
 
 	def show

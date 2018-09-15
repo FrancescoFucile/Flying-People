@@ -6,8 +6,13 @@ class User < ApplicationRecord
 				 :trackable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
 	mount_uploader :fotoProfilo, FotoProfiloUploader
+	
+	has_many :conversations_sent, class_name: 'Conversation'
+	has_many :conversations_received, class_name: 'Conversation'
+	has_many :messages, dependent: :destroy
 
 	validate  :dim_fotoProfilo
+	validates :username, :presence => true, :uniqueness => true
 
 	def self.from_omniauth(auth) 
 		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
