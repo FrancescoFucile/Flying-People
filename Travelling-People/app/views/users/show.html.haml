@@ -16,9 +16,7 @@
 %h1 link report utente
 %h1 link foto utente
 
+=button_to 'New Report', new_report_path, :method => :get 
 
-
-
-
-
-
+%h3 Reports
+%ol= render @reports

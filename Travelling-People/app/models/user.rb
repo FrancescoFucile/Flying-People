@@ -35,4 +35,6 @@ class User < ApplicationRecord
 			errors.add(:fotoProfilo, "L'immagine deve essere inferiore a 5MB")
     end
   end
+
+  has_many :reports, dependent: :destroy
 end

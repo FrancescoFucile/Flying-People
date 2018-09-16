@@ -11,3 +11,4 @@ User.create!(username:  "administrator",
              password:              "password",
              password_confirmation: "password",
              admin: true)
+

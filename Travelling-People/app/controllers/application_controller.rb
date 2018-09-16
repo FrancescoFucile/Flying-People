@@ -7,4 +7,13 @@ class ApplicationController < ActionController::Base
 	def configure_params
 		devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :fotoProfilo, :descrizione, :password, :password_confirmation])
 	end
+
+    def redirect_if_not_signed_in
+      redirect_to root_path if !user_signed_in?
+    end
+
+    def redirect_if_signed_in
+      redirect_to root_path if user_signed_in?
+    end
+
 end

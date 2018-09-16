@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 			flash[:warning] = 'Utente inesistente!'
 			redirect_to root_path
 		end
+        @reports = @user.reports
 	end
 
 	def destroy
