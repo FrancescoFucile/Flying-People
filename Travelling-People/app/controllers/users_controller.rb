@@ -15,5 +15,12 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def destroy
+    	@user = User.find(params[:id])
+		User.destroy(@user.id)
+    	flash[:notice] = 'Utente eliminato!'
+    	redirect_to users_path
+  	end
+
 end
 

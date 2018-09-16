@@ -1,5 +1,8 @@
 %h1 Travelling-People
 
+- if can? :delete, @user
+	= button_to 'Elimina utente', @user, method: :delete, data: { confirm: "Vuoi davvero eliminare questo utente?" }
+
 %h2 Profilo di #{@user.username}
 %h2 #{@user.descrizione}
 

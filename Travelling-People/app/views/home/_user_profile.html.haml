@@ -1,5 +1,6 @@
 %h2 Nome utente: #{current_user.username}
-
+- if current_user.admin?
+	%h2 (Amministratore)
 %h2 #{current_user.descrizione}
 
 = button_to 'Log out', destroy_user_session_path, :method => :delete
@@ -16,7 +17,10 @@
 	= submit_tag "Cerca", name: nil
 
 %br/
-
 = link_to 'Invia messaggio a un utente', users_path
+%br/
+%br/
+- if !current_user.admin?
+	= link_to "Segnala abuso all'amministratore", '#'
 
 %hr/
