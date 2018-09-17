@@ -1,6 +1,6 @@
 <li>
 	<% if user.admin? %>
-	  <%= user.username %> (admin) | <%= link_to 'Inizia conversazione', new_message_path(receiver_id: user) %> (se invece vuoi solo segnalare qualche problema <%= link_to 'clicca su questo link', '#' %>)
+	  <%= user.username %> (admin) | <%= link_to 'Inizia conversazione', new_message_path(receiver_id: user) %> (se invece vuoi solo segnalare qualche problema <%= link_to 'clicca su questo link', new_message_abus_path %>)
   <% else %>
     <%= user.username %> | <%= link_to 'Inizia conversazione', new_message_path(receiver_id: user) %>
   <% end %>

@@ -10,6 +10,8 @@ class User < ApplicationRecord
 	has_many :conversations_sent, class_name: 'Conversation'
 	has_many :conversations_received, class_name: 'Conversation'
 	has_many :messages, dependent: :destroy
+	has_many :message_abuses, dependent: :destroy
+	has_many :reports, dependent: :destroy
 
 	validate  :dim_fotoProfilo
 	validates :username, :presence => true, :uniqueness => true
@@ -36,5 +38,4 @@ class User < ApplicationRecord
     end
   end
 
-  has_many :reports, dependent: :destroy
 end

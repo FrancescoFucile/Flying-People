@@ -8,6 +8,7 @@ class Ability
       can :crud, :Message
 			can :crud, :Conversation
 			can :read, :User
+			can :create, :MessageAbuse
 
       if user.admin?  	# -> admin
         can :manage, :all
