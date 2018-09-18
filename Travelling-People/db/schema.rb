@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180915174236) do
+ActiveRecord::Schema.define(version: 20180918175435) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
@@ -31,12 +31,32 @@ ActiveRecord::Schema.define(version: 20180915174236) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "report_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "content"
+    t.integer "report_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_report_comments_on_report_id"
+    t.index ["user_id"], name: "index_report_comments_on_user_id"
+  end
+
+  create_table "report_likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "report_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_report_likes_on_report_id"
+    t.index ["user_id"], name: "index_report_likes_on_user_id"
+  end
+
   create_table "reports", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "locality"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 

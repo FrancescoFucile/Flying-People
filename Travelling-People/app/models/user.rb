@@ -37,4 +37,6 @@ class User < ApplicationRecord
   end
 
   has_many :reports, dependent: :destroy
+  has_many :report_comments, dependent: :destroy
+  has_many :report_likes, dependent: :destroy
 end
