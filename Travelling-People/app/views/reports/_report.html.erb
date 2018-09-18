@@ -4,12 +4,16 @@
     <div class="card-block">
 -->
       <h5 class="post-text">
-        <%= truncate(report.title, :length => 60) %>
+        <%= truncate(report.title, :length => 60) %>,
+	<%= report.created_at %>, 
+	<div class="posted-by">Posted by <%= report.user.username %></div>
+	<% if can? :delete, report %>
+		<%= button_to 'Elimina report', report, method: :delete, data: { confirm: "Vuoi davvero eliminare questo report?" } %>
+	<% end %>
       </h5>
-      <div class="post-content">
-        <div class="posted-by">Posted by <%= report.user.username %></div>
-        <h6><%= report.title %></h6> 
+      <div class="post-content"> 
         <p><%= report.content %></p>
+	<hr>
 <!--
       </div>
     </div>
