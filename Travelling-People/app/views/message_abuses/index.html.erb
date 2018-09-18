@@ -1,9 +1,14 @@
 <h1>Abusi segnalati:</h1>
 
 <div>
-	<%= render @message_abuses %>
+	<% if @message_abuses.nil? %>
+		<b> Ancora nessuna segnalazione </b>
+	<% else %>
+		<%= render @message_abuses %>
+	<% end %>
 </div>
 
+<br/>
 <%= link_to 'Indietro', root_path %>
 
 

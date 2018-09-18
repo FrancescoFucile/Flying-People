@@ -3,6 +3,7 @@
 	%h2 (Amministratore)
 %h2 #{current_user.descrizione}
 
+= button_to 'Modifica profilo', edit_user_registration_path(current_user), :method => :get
 = button_to 'Log out', destroy_user_session_path, :method => :delete
 
 - if current_user.fotoProfilo?
