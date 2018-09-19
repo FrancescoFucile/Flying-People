@@ -2,7 +2,6 @@
   <%= f.text_field  :title, 
                     maxlength: 100, 
                     placeholder: 'Title', 
-                    class: 'form-control',
                     required: true, 
                     minlength: 5,
                     maxlength: 100 %>
@@ -12,8 +11,7 @@
                   required: true, 
                   minlength: 20,
                   maxlength: 1000000,
-                  placeholder: 'Write about your experience', 
-                  class: 'form-control' %>
+                  placeholder: 'Write about your experience' %>
 	<br>
-  <%= f.submit "Create a post", class: 'form-control' %>
+  <%= f.submit "Create a post" %>
 <% end %>

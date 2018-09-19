@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(message_params)	
     @message.conversation_id = @conversation.id
     if @message.save
-	    flash[:notice] = "Messaggio inviato!"
+	    flash[:success] = "Messaggio inviato!"
 			redirect_to conversation_path(@conversation)
 	  end
 	end

@@ -1,18 +1,16 @@
 %h2 Nome utente: #{current_user.username}
-- if current_user.admin?
-	%h2 (Amministratore)
-%h2 #{current_user.descrizione}
 
 - if !current_user.provider
-	= button_to 'Modifica profilo', edit_user_registration_path(current_user, current_user.username), :method => :get
-
-= button_to 'Pubblica un nuovo report', new_report_path, :method => :get 
-= button_to 'Log out', destroy_user_session_path, :method => :delete
+	%h2 Descrizione: #{current_user.descrizione}
 
 - if current_user.fotoProfilo?
 	= image_tag current_user.fotoProfilo.url
 - else
 	= image_tag current_user.fotoProfilo.default_url
+
+%p/
+= button_to 'Pubblica un nuovo report', new_report_path, :method => :get 
+= button_to 'Pubblica una nuova foto', '#', :method => :get 
 
 %hr/
 
@@ -28,4 +26,4 @@
 	= link_to "Segnala abuso all'amministratore", new_message_abus_path
 - else
 	= link_to "Controlla segnalazioni", message_abuses_path
-%hr/
+

@@ -12,15 +12,16 @@ class UsersController < ApplicationController
 		if @user.nil?
 			flash[:warning] = 'Utente inesistente!'
 			redirect_to root_path
+		else
+		        @reports = @user.reports
 		end
-        @reports = @user.reports
 	end
 
 	def destroy
     	@user = User.find(params[:id])
 		User.destroy(@user.id)
-    	flash[:notice] = 'Utente eliminato!'
-    	redirect_to users_path
+    	flash[:success] = 'Utente eliminato!'
+    	redirect_to root_path
   	end
 
 end

@@ -10,7 +10,7 @@ class MessageAbusesController < ApplicationController
   def create
     @message_abuse = MessageAbuse.new(message_abuse_params)	
     if @message_abuse.save
-	    flash[:notice] = "Segnalazione anonima inviata correttamente! Grazie per la tua collaborazione"
+	    flash[:success] = "Segnalazione anonima inviata correttamente! Grazie per la tua collaborazione"
 			redirect_to root_path
 	  end
 	end
@@ -18,7 +18,7 @@ class MessageAbusesController < ApplicationController
 	def index
 		@message_abuses = MessageAbuse.all
 		if @message_abuses.nil?
-			flash[:notice] = 'Nessun abuso segnalato'
+			flash[:info] = 'Nessun abuso segnalato'
 		end
   	end
 

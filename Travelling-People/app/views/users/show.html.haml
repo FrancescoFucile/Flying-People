@@ -1,10 +1,12 @@
-%h1 Travelling-People
-
 - if can? :delete, @user
 	= button_to 'Elimina utente', @user, method: :delete, data: { confirm: "Vuoi davvero eliminare questo utente?" }
 
 %h2 Profilo di #{@user.username}
-%h2 #{@user.descrizione}
+- if @user.descrizione==""
+	%h5 Nessuna descrizione
+- else
+	%h2 Descrizione: #{@user.descrizione}
+
 
 - if @user.fotoProfilo?
 	= image_tag @user.fotoProfilo.url

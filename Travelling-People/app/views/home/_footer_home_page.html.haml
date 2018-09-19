@@ -1,9 +1,16 @@
 %h2 Cerca luogo:
+= form_tag '#' do
+	= text_field '#', placeholder: "Cerca luogo", required: true
+	= submit_tag "Cerca", name: nil
 
 %hr/
 
 %h3 Report più recenti:
 = link_to 'Vedi i report più recenti',  reports_path
+
+%br/ 
+%br/ 
+%hr/
 
 %h3 Foto più votate:
 = link_to 'Vedi le foto più votate', '#'

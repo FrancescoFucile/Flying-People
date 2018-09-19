@@ -25,7 +25,7 @@ class ReportsController < ApplicationController
   def destroy
     @report = Report.find(params[:id])
     Report.destroy(@report.id)
-    flash[:notice] = 'Report eliminato!'
+    flash[:success] = 'Report eliminato!'
     redirect_to root_path
   end
 

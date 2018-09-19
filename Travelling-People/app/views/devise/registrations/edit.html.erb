@@ -51,6 +51,7 @@
 
 <hr>
 
+<% if !current_user.admin? %>
 <p><%= button_to "Elimina account", registration_path(resource_name), data: { confirm: "Vuoi davvero eliminare il tuo account?" }, method: :delete %></p>
-
+<% end %>
 <%= link_to "Indietro", root_path %>

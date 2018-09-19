@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TravellingPeople</title>
+    <title>Travelling-People</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/simplex/bootstrap.min.css' %>
   </head>
 
   <body>
+	<header class="navbar navbar-fixed-top navbar">
+		<h1 id="title"> Travelling-People </h1>
+		<% if current_user.present? %>
+			<% if current_user.admin? %>
+				<h2 id="adm"> (Admin) </h2>
+			<% end %>
+			<% if !current_user.provider %>
+				<%= button_to 'Modifica profilo', edit_user_registration_path(current_user, current_user.username), :method => :get %>
+			<% end %>
+			<%= button_to 'Log out', destroy_user_session_path, :method => :delete %>
+		<% else %>
+			<%= button_to 'Registrati', new_user_registration_path, :method => :get %>
+			<%= button_to 'Accedi', new_user_session_path, :method => :get %>
+			<%= button_to 'Accedi con Google', user_google_oauth2_omniauth_authorize_path, :method => :get %>
+		<% end %>
+	</header>
 		<% flash.each do |key, value| %>
 			<div class="alert alert-<%= key %>"><%= value %></div>
 		<% end %>
-
 		<%= yield %>
   </body>
 </html>
+

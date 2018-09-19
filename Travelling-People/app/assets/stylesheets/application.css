@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+#title{
+  float: left;
+  margin-right: 10px;
+  font-size: 2.1em;
+  color: black;
+  text-transform: uppercase;
+  padding-top: 9px;
+}
+
+#adm{
+  font-size: 1.8em;
+  color: red;
+  padding-top: 9px;
+}

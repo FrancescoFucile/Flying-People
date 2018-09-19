@@ -6,7 +6,7 @@ class ConversationsController < ApplicationController
 	def index
 		@conversations = Conversation.where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
 		if @conversations.empty?
-			flash[:notice] = 'Ancora nessuna chat'
+			flash[:info] = 'Ancora nessuna chat'
 			redirect_to users_path
 		end
     		@users = User.where.not(id: current_user.id)

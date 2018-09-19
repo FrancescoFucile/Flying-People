@@ -8,7 +8,7 @@
 	<%= hidden_field_tag 'conversation_id', @conversation.id %>
 	<%= f.label :Inserisci_messaggio %>
 	<br>
-  <%= f.text_area :body %>
+  <%= f.text_area :body, required: true %>
 	<br>
   <%= f.submit 'Invia'%>
 <% end %>
