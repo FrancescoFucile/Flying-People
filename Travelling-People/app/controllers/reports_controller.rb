@@ -29,6 +29,16 @@ class ReportsController < ApplicationController
     redirect_to root_path
   end
 
+  def like
+    @report = Report.find(params[:id])
+    if @report.user.id == current_user.id
+	flash[:info] = 'Non puoi mettere like ai tuoi post'
+    else
+        @report.update(num_likes: @report.num_likes+1)
+    end
+    redirect_to reports_path
+  end
+
   def report_params
     params.require(:report).permit(:content, :title)
                          .merge(user_id: current_user.id)

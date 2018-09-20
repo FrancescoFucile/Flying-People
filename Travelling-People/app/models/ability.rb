@@ -9,6 +9,8 @@ class Ability
 			can :crud, :Conversation
 			can :read, :User
 			can :create, :MessageAbuse
+			can [:create, :read, :like], :Report
+			can :delete, :Report, user_id: user.id
 
       if user.admin?  	# -> admin
         can :manage, :all

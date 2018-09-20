@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 	resources :message_abuses, only:[:new, :create, :index]
 	
 	get 'users/search', to: 'users#search'
+	get 'reports/:id/like', to: 'reports#like', as: 'report_like'
 
 	root :to => 'home#index'
 
