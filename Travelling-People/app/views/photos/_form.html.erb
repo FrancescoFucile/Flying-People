@@ -19,10 +19,7 @@
     <%= f.label :locality %><br>
     <%= f.text_field :locality %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
