@@ -1,42 +1,37 @@
-<%= form_with(model: photo, local: true) do |form| %>
-  <% if photo.errors.any? %>
+<%= form_for @photo, html: { multipart: true } do |f| %>
+  <% if @photo.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+      <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
 
       <ul>
-      <% photo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @photo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :photo_title %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
   </div>
-
   <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image, id: :photo_image %>
+    <%= f.label :locality %><br>
+    <%= f.text_field :locality %>
   </div>
-
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :photo_description %>
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
   </div>
-
   <div class="field">
-    <%= form.label :locality %>
-    <%= form.text_field :locality, id: :photo_locality %>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
   </div>
-
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :photo_user_id %>
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
   </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>
