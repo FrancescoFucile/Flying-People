@@ -22,7 +22,7 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @user_name %>
+  <%= link_to @user_name, user_path(@photo.user_id) %>
 </p>
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
