@@ -21,6 +21,6 @@
 %br/
 %hr/
 %h1 Foto pubblicate da #{@user.username}:
-
-
+- @photos.each do |photo|
+	= image_tag photo.image.thumb.url
 
