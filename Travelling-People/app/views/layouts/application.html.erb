@@ -12,6 +12,7 @@
   <body>
 	<header class="navbar navbar-fixed-top navbar">
 		<h1 id="title"> Travelling-People </h1>
+		<%= link_to "Home", root_path %>
 		<% if current_user.present? %>
 			<% if current_user.admin? %>
 				<h2 id="adm"> (Admin) </h2>
