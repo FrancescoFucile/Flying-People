@@ -12,6 +12,7 @@ class User < ApplicationRecord
 	has_many :messages, dependent: :destroy
 	has_many :message_abuses
 	has_many :reports, dependent: :destroy
+	has_many :photo_likes, dependent: :destroy
 
 	validate  :dim_fotoProfilo
 	validates :username, :presence => true, :uniqueness => true

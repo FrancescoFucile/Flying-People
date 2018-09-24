@@ -63,6 +63,12 @@ class PhotosController < ApplicationController
     end
   end
 
+  def like
+    @photo = Photo.find(params[:id])
+    PhotoLike.find_or_create_by(photo_id: @photo.id, user_id: current_user.id)
+    redirect_back fallback_location: root_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
