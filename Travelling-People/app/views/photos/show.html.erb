@@ -49,5 +49,6 @@
 </p>
 <% if current_user.id == @photo.user_id %>
   <%= link_to 'Edit', edit_photo_path(@photo) %> |
+  <%= link_to "Delete", photo_path(@photo), method: :delete %>
 <% end %>
 <%= link_to 'Home', root_path %>
