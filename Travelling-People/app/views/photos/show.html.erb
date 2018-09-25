@@ -1,17 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
   <%= @photo.title %>
 </p>
 
 <p>
-  <strong>Image:</strong>
   <%= image_tag @photo.image.thumb.url %>
 </p>
 
 <p>
-  <strong>Description:</strong>
   <%= @photo.description %>
 </p>
 
@@ -29,6 +26,14 @@
 <p>
   Likes:
   <%= PhotoLike.where(photo_id: @photo.id).count %>
+</p>
+<p>
+  <strong>Comments:</strong> <br/>
+  <% @comments = PhotoComment.where(photo_id: @photo.id) %>
+  <% @comments.each do |comment| %>
+    <%= link_to User.find(comment.user_id).username, user_path(comment.user_id) %>:
+    <%= comment.content %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
