@@ -23,4 +23,4 @@
 %h1 Foto pubblicate da #{@user.username}:
 - @photos.each do |photo|
 	= image_tag photo.image.thumb.url
-
+	= link_to "View", photo_path(photo.id)
