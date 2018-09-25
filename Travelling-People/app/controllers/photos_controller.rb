@@ -22,6 +22,9 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
+    if current_user.id != Photo.find(params[:id]).user_id
+      redirect_to root_path
+    end
   end
 
   # POST /photos
