@@ -16,12 +16,12 @@
 -#= link_to 'Vedi le foto più votate', '#'
 
 %h3 Popular pics:
-- @photo_ids = PhotoLike.group("photo_id").order("COUNT(photo_id) DESC").take(3)
-- @photo_ids.each do |photo_id|
--	id = photo_id.photo_id
+- @id_counts = PhotoLike.all.group("photo_id").count.sort_by{|a,b| -b}
+- @id_counts.each do |id_count|
+-	id = id_count[0]
 -	photo = Photo.find(id)
 	= image_tag photo.image.thumb.url
 	%br/
-	= link_to "View", photo_path(photo_id)
+	= link_to "View", photo_path(id_count)
 	%br
 
