@@ -33,6 +33,18 @@
   <% @comments.each do |comment| %>
     <%= link_to User.find(comment.user_id).username, user_path(comment.user_id) %>:
     <%= comment.content %>
+    <br/>
+  <% end %>
+</p>
+
+<p>
+  <%= form_for @photo_comment, html: {multipart: true} do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :photo_id, :value => @photo.id %>
+    <%= f.text_area :content %>
+    <br/>
+    <%= f.submit "Comment"%>
+  </div>
   <% end %>
 </p>
 

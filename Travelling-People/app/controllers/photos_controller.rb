@@ -12,6 +12,7 @@ class PhotosController < ApplicationController
   def show
     set_photo
     @user_name = User.find(@photo.user_id).username
+    @photo_comment = PhotoComment.new
   end
 
   # GET /photos/new
@@ -69,6 +70,11 @@ class PhotosController < ApplicationController
     redirect_back fallback_location: root_path
   end
 
+  def comment
+    @photo_comment = PhotoComment.create(photo_comment_params)
+    redirect_back fallback_location: root_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
@@ -78,5 +84,9 @@ class PhotosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
       params.require(:photo).permit(:title, :image, :description, :locality, :user_id)
+    end
+
+    def photo_comment_params
+      params.require(:photo_comment).permit(:user_id, :photo_id, :content)
     end
 end

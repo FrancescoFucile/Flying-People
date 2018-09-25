@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 	get 'users/search', to: 'users#search'
 	get 'reports/:id/like', to: 'reports#like', as: 'report_like'
   get 'photos/:id/like', to: 'photos#like', as: 'photo_like'
+  post 'photos/:id/comment', to: 'photos#comment', as: 'photo_comments'
 
 	root :to => 'home#index'
 
