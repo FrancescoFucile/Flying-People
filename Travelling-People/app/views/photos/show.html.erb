@@ -1,16 +1,22 @@
 <p id="notice"><%= notice %></p>
 
+<h3>
+  <strong>
+    <%= @photo.title %>
+  </strong>
+</h3>
 <p>
-  <%= @photo.title %>
-</p>
-
+  <% if current_user.id == @photo.user_id %>
+    <%= link_to 'Edit', edit_photo_path(@photo) %> |
+    <%= link_to "Delete", photo_path(@photo), method: :delete %>
+  <% end %></p>
 <p>
   <%= image_tag @photo.image.thumb.url %>
 </p>
 
-<p>
+<h4>
   <%= @photo.description %>
-</p>
+</h4>
 
 <p>
   <strong>Locality:</strong>
@@ -47,8 +53,3 @@
     </div>
   <% end %>
 </p>
-<% if current_user.id == @photo.user_id %>
-  <%= link_to 'Edit', edit_photo_path(@photo) %> |
-  <%= link_to "Delete", photo_path(@photo), method: :delete %>
-<% end %>
-<%= link_to 'Home', root_path %>
