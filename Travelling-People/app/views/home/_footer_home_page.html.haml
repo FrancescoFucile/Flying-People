@@ -1,9 +1,12 @@
-%h2 Cerca luogo:
-= form_tag '#' do
-  = text_field '#', placeholder: "Cerca luogo", required: true
-  = submit_tag "Cerca", name: nil
+:javascript
+  function load_locality() {
+  var locality = document.getElementById('locality_name').value;
+  console.log("Redirecting to locality " + locality);
+  location.href = "/locality/"+locality; }
 
-%hr/
+%input#locality_name{:name => "locality", :type => "text"}/
+
+%input{:onclick => "load_locality()", :type => "button", :value => "Cerca"}/
 
 %h3 Report più recenti:
 = link_to 'Vedi i report più recenti',  reports_path
