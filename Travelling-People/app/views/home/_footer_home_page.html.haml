@@ -12,5 +12,13 @@
 %br/ 
 %hr/
 
-%h3 Foto più votate:
-= link_to 'Vedi le foto più votate', '#'
+-#%h3 Foto più votate:
+-#= link_to 'Vedi le foto più votate', '#'
+
+%h3 Popular pics:
+- @photo_ids = PhotoLike.group("photo_id").order("COUNT(photo_id) DESC").take(3)
+- @photo_ids.each do |photo_id|
+-	id = photo_id.photo_id
+-	photo = Photo.find(id)
+	= image_tag photo.image.thumb.url
+
