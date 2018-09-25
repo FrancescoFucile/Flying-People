@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Leaflet Map</title>
+  <meta charset="utf-8"/>
+  <link
+    rel="stylesheet"
+    href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
+    />
+  <script>
+
+      var locality = "<%= @locality_name %>";
+
+      console.log("Locality: " + locality)
+
+      function extract_extract(locality) {
+          var req = new XMLHttpRequest();
+          req.onreadystatechange = function () {
+              if (req.readyState == 4 && req.status == 200) {
+                  //console.log('extract query response\n:' + req.responseText);
+                  try {
+                      var data = JSON.parse(req.responseText);
+                      console.log(data);
+                      var page = Object.keys(data["query"]["pages"])[0];
+                      var extract = data["query"]["pages"][page]["extract"];
+                      var title = data["query"]["pages"][page]["title"];
+                      document.getElementById("extract").innerHTML = extract;
+                      document.title = title;
+                  } catch (err) {
+                      console.log(err.message + " in " + req.responseText);
+                      return;
+                  }
+              }
+          }
+          req.open("GET", "https://it.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles="+locality+"&origin=*", true);
+          req.send();
+      }
+
+      function locate(locality) {
+          var req = new XMLHttpRequest();
+          req.onreadystatechange = function () {
+              if (req.readyState == 4 && req.status == 200) {
+                  //console.log('location query response\n:' + req.responseText);
+                  try {
+                      var data = JSON.parse(req.responseText);
+                      //console.log(data);
+                      var lng = data[0]["lon"];
+                      var lat = data[0]["lat"];
+                      console.log("lat:" + lat + "\nlng:" + lng);
+                      display_map(lat, lng);
+                  } catch (err) {
+                      console.log(err.message + " in " + req.responseText);
+                      return;
+                  }
+              }
+          }
+          req.open("GET", "https://nominatim.openstreetmap.org/search?format=json&q="+locality, true);
+          req.send();
+      }
+
+      function display_map(lat, lng) {
+          var map = L.map('map').setView([lat, lng], 10);
+          mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+          L.tileLayer(
+              'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                  attribution: '&copy; ' + mapLink + ' Contributors',
+                  maxZoom: 18,
+              }).addTo(map);
+      }
+
+      function load() {
+          extract_extract(locality);
+          locate(locality);
+      }
+
+  </script>
+</head>
+<body onload="load()">
+<div id="map" style="width: 600px; height: 400px"></div>
+<script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">
+</script>
+<p id="extract"></p>
+</body>
+</html>
