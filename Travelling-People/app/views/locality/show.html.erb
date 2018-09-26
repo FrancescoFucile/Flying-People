@@ -13,6 +13,10 @@
 
       console.log("Locality: " + locality)
 
+      document.addEventListener("turbolinks:load", function() {
+          load();
+      });
+
       function extract_extract(locality) {
           var req = new XMLHttpRequest();
           req.onreadystatechange = function () {
