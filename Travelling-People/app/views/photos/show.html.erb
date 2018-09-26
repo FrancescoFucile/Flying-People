@@ -6,7 +6,7 @@
   </strong>
 </h3>
 <p>
-  <% if current_user.id == @photo.user_id %>
+  <% if current_user && current_user.id == @photo.user_id %>
     <%= link_to 'Edit', edit_photo_path(@photo) %> |
     <%= link_to "Delete", photo_path(@photo), method: :delete %>
   <% end %></p>
@@ -27,8 +27,9 @@
   <strong>Author:</strong>
   <%= link_to @user_name, user_path(@photo.user_id) %>
 </p>
-
-<%= link_to "Like", photo_like_path(@photo.id) %>
+<% if current_user %>
+  <%= link_to "Like", photo_like_path(@photo.id) %>
+<% end %>
 <p>
   Likes:
   <%= PhotoLike.where(photo_id: @photo.id).count %>
@@ -44,12 +45,14 @@
 </p>
 
 <p>
-  <%= form_for @photo_comment, html: {multipart: true} do |f| %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :photo_id, :value => @photo.id %>
-    <%= f.text_area :content %>
-    <br/>
-    <%= f.submit "Comment" %>
-    </div>
+  <% if current_user %>
+    <%= form_for @photo_comment, html: {multipart: true} do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :photo_id, :value => @photo.id %>
+      <%= f.text_area :content %>
+      <br/>
+      <%= f.submit "Comment" %>
+      </div>
+    <% end %>
   <% end %>
 </p>
