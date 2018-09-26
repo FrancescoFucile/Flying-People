@@ -36,7 +36,8 @@
                   }
               }
           }
-          req.open("GET", "https://it.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles="+locality+"&origin=*", true);
+          // var lang = navigator.language || navigator.userLanguage;
+          req.open("GET", "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles="+locality+"&origin=*", true);
           req.send();
       }
 
