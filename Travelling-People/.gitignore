@@ -21,3 +21,9 @@
 /yarn-error.log
 
 .byebug_history
+
+# Ignore uploads
+Travelling-People/public/uploads/
+
+# Ignore Idea settings
+.idea/

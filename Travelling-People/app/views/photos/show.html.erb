@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<h3>
+  <strong>
+    <%= @photo.title %>
+  </strong>
+</h3>
+<p>
+  <% if current_user && current_user.id == @photo.user_id %>
+    <%= link_to 'Edit', edit_photo_path(@photo) %> |
+    <%= link_to "Delete", photo_path(@photo), method: :delete %>
+  <% end %></p>
+<p>
+  <%= image_tag @photo.image.thumb.url %>
+</p>
+
+<h4>
+  <%= @photo.description %>
+</h4>
+
+<p>
+  <strong>Locality:</strong>
+  <%= @photo.locality %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= link_to @user_name, user_path(@photo.user_id) %>
+</p>
+<% if current_user %>
+  <%= link_to "Like", photo_like_path(@photo.id) %>
+<% end %>
+<p>
+  Likes:
+  <%= PhotoLike.where(photo_id: @photo.id).count %>
+</p>
+<p>
+  <strong>Comments:</strong> <br/>
+  <% @comments = PhotoComment.where(photo_id: @photo.id) %>
+  <% @comments.each do |comment| %>
+    <%= link_to User.find(comment.user_id).username, user_path(comment.user_id) %>:
+    <%= comment.content %>
+    <br/>
+  <% end %>
+</p>
+
+<p>
+  <% if current_user %>
+    <%= form_for @photo_comment, html: {multipart: true} do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :photo_id, :value => @photo.id %>
+      <%= f.text_area :content %>
+      <br/>
+      <%= f.submit "Comment" %>
+      </div>
+    <% end %>
+  <% end %>
+</p>

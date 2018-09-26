@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 	def show
 	#	@user = User.find_by(username: params[:user][:username])
 		@user = User.find(params[:id])
+		@photos = Photo.where(user_id: params[:id])
 		if @user.nil?
 			flash[:warning] = 'Utente inesistente!'
 			redirect_to root_path
