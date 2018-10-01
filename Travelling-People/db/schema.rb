@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180925132617) do
+=======
+ActiveRecord::Schema.define(version: 20180918175435) do
+>>>>>>> 64fafb5343b96602b4ddedffd02d72d402869cb0
 
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
@@ -39,6 +43,7 @@ ActiveRecord::Schema.define(version: 20180925132617) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+<<<<<<< HEAD
   create_table "photo_comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "photo_id"
@@ -69,6 +74,8 @@ ActiveRecord::Schema.define(version: 20180925132617) do
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
+=======
+>>>>>>> 64fafb5343b96602b4ddedffd02d72d402869cb0
   create_table "report_comments", force: :cascade do |t|
     t.integer "user_id"
     t.text "content"
