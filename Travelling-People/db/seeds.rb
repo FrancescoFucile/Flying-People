@@ -31,16 +31,16 @@ User.create!([{
 Report.create!(
   title:   "Lorem ipsum",
   content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  user_id: User.find_by(name: "Bob").id
+  user_id: User.find_by(username: "Bob").id
   )
 
 ReportLike.create!(
-  user_id:   User.find_by(name: "Alice").id
-  report_id: Report.first.id,
+  user_id:   User.find_by(username: "Alice").id,
+  report_id: Report.first.id
   )
 
 ReportComment.create!(
-  user_id:   User.find_by(name: "Alice").id
+  user_id:   User.find_by(username: "Alice").id,
   report_id: Report.first.id,
   content:   "My first comment!"
   )
