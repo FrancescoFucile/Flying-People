@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 	get 'reports/:id/like', to: 'reports#like', as: 'report_like'
   get 'photos/:id/like', to: 'photos#like', as: 'photo_like'
   post 'photos/:id/comment', to: 'photos#comment', as: 'photo_comments'
+  get 'locality/:name', to: 'locality#show', as: 'locality'
 
 	root :to => 'home#index'
 
