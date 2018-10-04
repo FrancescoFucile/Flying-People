@@ -1,15 +1,15 @@
 %h2 Cerca luogo:
 = form_tag '#' do
-	= text_field '#', placeholder: "Cerca luogo", required: true
-	= submit_tag "Cerca", name: nil
+  = text_field '#', placeholder: "Cerca luogo", required: true
+  = submit_tag "Cerca", name: nil
 
 %hr/
 
 %h3 Report più recenti:
 = link_to 'Vedi i report più recenti',  reports_path
 
-%br/ 
-%br/ 
+%br/
+%br/
 %hr/
 
 -#%h3 Foto più votate:
@@ -20,8 +20,8 @@
 - @id_counts.each do |id_count|
 -	id = id_count[0]
 -	photo = Photo.find(id)
-	= image_tag photo.image.thumb.url
-	%br/
-	= link_to "View", photo_path(id_count)
-	%br
+  = image_tag photo.image.thumb.url
+  %br/
+  = link_to "View", photo_path(id_count)
+  %br
 
