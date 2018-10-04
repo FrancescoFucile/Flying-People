@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 	resources :messages, only: [:new, :create]
 	resources :message_abuses, only:[:new, :create, :index]
 	
-	get 'users/search', to: 'users#search'
+	get 'users/search/:username', to: 'users#search', as: 'user_search'
 	get 'reports/:id/like', to: 'reports#like', as: 'report_like'
   get 'photos/:id/like', to: 'photos#like', as: 'photo_like'
   post 'photos/:id/comment', to: 'photos#comment', as: 'photo_comments'

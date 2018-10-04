@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 	end
 
 	def search
+		name = params[:username]
+		@user = User.find_by(username: name)
+		redirect_to user_path(@user.id)
 	end
 
 	def show

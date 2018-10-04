@@ -4,9 +4,9 @@
   console.log("Redirecting to locality " + locality);
   location.href = "/locality/"+locality; }
 
-%input#locality_name{:name => "locality", :type => "text"}/
+%input#locality_name{:name => "locality", :type => "text", :placeholder => "Inserisci località"}/
 
-%input{:onclick => "load_locality()", :type => "button", :value => "Cerca"}/
+%input{:onclick => "load_locality()", :type => "button", :value => "Cerca località"}/
 
 %h3 Report più recenti:
 = link_to 'Vedi i report più recenti',  reports_path
