@@ -6,6 +6,12 @@
                     minlength: 5,
                     maxlength: 100 %>
 	<br>
+  <%= f.text_field :locality, 
+                   placeholder: 'Locality',
+                   required: true, 
+                   minlength: 5,
+                   maxlength: 100 %>
+  <br>
   <%= f.text_area :content, 
                   rows: 6,
                   required: true, 
