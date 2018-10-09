@@ -59,3 +59,13 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+# Shoulda!
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Test framework:
+    with.test_framework :rspec
+    # Load all Rails libraries
+    with.library :rails
+  end
+end
