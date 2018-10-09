@@ -20,7 +20,7 @@
 
 <p>
   <strong>Locality:</strong>
-  <%= @photo.locality %>
+  <%= link_to @photo.locality, locality_path(@photo.locality) %>
 </p>
 
 <p>

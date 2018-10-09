@@ -10,9 +10,10 @@ Rails.application.routes.draw do
 	resources :messages, only: [:new, :create]
 	resources :message_abuses, only:[:new, :create, :index]
 	
-	get 'users/search', to: 'users#search'
+	get 'users/search/:username', to: 'users#search', as: 'user_search'
   get 'photos/:id/like', to: 'photos#like', as: 'photo_like'
   post 'photos/:id/comment', to: 'photos#comment', as: 'photo_comments'
+  get 'locality/:name', to: 'locality#show', as: 'locality'
 
 	root :to => 'home#index', as: 'root'
 
@@ -22,8 +23,5 @@ Rails.application.routes.draw do
 	end
 	get  'reports/:id/like', 				 to: 'reports#like',           as: 'report_like'
 	get  'reports/:id/dislike', 	   to: 'reports#dislike',        as: 'report_dislike'
-	#post 'reports/:id/comment', 		 to: 'report_comments#create', as: 'report_comment'
-	#get  'reports/:id/comment/:cid', to: 'report_comments#show',   as: 'report_comment_show'
-
 
 end

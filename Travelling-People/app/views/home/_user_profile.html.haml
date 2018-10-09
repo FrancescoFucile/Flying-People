@@ -1,12 +1,18 @@
+:javascript
+  function load_user() {
+  var user_name = document.getElementById('user_name').value;
+  console.log("Redirecting to user " + user_name);
+  location.href = "/users/search/"+user_name; }
+
 %h2 Nome utente: #{current_user.username}
 
 - if !current_user.provider
-	%h2 Descrizione: #{current_user.descrizione}
+  %h2 Descrizione: #{current_user.descrizione}
 
 - if current_user.fotoProfilo?
-	= image_tag current_user.fotoProfilo.url
+  = image_tag current_user.fotoProfilo.url
 - else
-	= image_tag current_user.fotoProfilo.default_url
+  = image_tag current_user.fotoProfilo.default_url
 
 %p/
 = button_to 'Pubblica un nuovo report', new_report_path, :method => :get 
@@ -14,16 +20,16 @@
 
 %hr/
 
-= form_tag users_search_path, :method => :get do
-	= text_field :user, :username, placeholder: "Cerca utente", required: true
-	= submit_tag "Cerca", name: nil
+%input#user_name{:name => "user_name", :type => "text", :placeholder => "Inserisci utente"}/
+
+%input{:onclick => "load_user()", :type => "button", :value => "Cerca utente"}/
 
 %br/
 = link_to 'Invia messaggio a un utente', users_path
 %br/
 %br/
 - if !current_user.admin?
-	= link_to "Segnala abuso all'amministratore", new_message_abus_path
+  = link_to "Segnala abuso all'amministratore", new_message_abus_path
 - else
-	= link_to "Controlla segnalazioni", message_abuses_path
+  = link_to "Controlla segnalazioni", message_abuses_path
 
