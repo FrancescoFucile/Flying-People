@@ -19,7 +19,8 @@ class ReportsController < ApplicationController
     if @report.save
       redirect_to report_path(:id => @report.id)
     else
-      redirect_to report_path(:id => @report.id)
+      flash.now[:warning] = 'Locality not valid'
+      render 'new'
     end
   end
 

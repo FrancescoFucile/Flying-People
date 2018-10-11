@@ -116,6 +116,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
     ffi (1.9.25-x86-mingw32)
+    geocoder (1.5.0)
     gherkin (5.1.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -305,6 +306,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_bot_rails
+  geocoder
   haml
   jbuilder (~> 2.5)
   launchy

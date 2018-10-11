@@ -11,4 +11,12 @@ class Report < ApplicationRecord
   validates :user, :presence => true
   validates_associated :report_comments
   validates_associated :report_likes
+
+  geocoded_by :locality do |obj, result|
+    if not result.present?
+      #errors.add(:locality, "does not exist")
+      obj.locality = nil
+    end
+  end
+  before_validation :geocode
 end
