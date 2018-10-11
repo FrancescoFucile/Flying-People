@@ -3,19 +3,19 @@
                     maxlength: 100, 
                     placeholder: 'Title', 
                     required: true, 
-                    minlength: 5,
+                    minlength: 4,
                     maxlength: 100 %>
 	<br>
   <%= f.text_field :locality, 
                    placeholder: 'Locality',
                    required: true, 
-                   minlength: 5,
+                   minlength: 1,
                    maxlength: 100 %>
   <br>
   <%= f.text_area :content, 
                   rows: 6,
                   required: true, 
-                  minlength: 20,
+                  minlength: 10,
                   maxlength: 1000000,
                   placeholder: 'Report' %>
                   <!--placeholder: 'Report. Write about your experience' %>
