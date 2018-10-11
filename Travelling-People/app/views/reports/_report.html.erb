@@ -5,8 +5,7 @@
   <h6>
     Created at: <%= report.created_at %>, 
     <div class="report-locality">
-      Locality: <%= link_to @report.locality,
-                           '/localities/' + @report.locality %>
+      Locality: <%= link_to @report.locality, locality_path(@report.locality) %>
     </div>
     </div>
     <div class="posted-by">Posted by <%= report.user.username %></div>
