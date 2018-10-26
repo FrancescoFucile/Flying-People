@@ -18,6 +18,7 @@ group :test do
 	gem 'rspec-rails'
 	gem 'rspec'
 	gem 'factory_bot_rails'
+  gem 'shoulda'
 end
 
 gem 'devise'				# per l'autenticazione 
@@ -58,6 +59,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
+
+gem 'geocoder'
 
 
 # Use Capistrano for deployment

@@ -1,26 +1,34 @@
-<!--
-<div class="col-sm-3 single-post-card" id=<%= report_path(report.id) %>>
-  <div class="card">
-    <div class="card-block">
--->
-      <h5 class="post-text">
-        <%= truncate(report.title, :length => 60) %>,
-	<%= report.created_at %>, 
-	<div class="posted-by">Posted by <%= report.user.username %></div>
-	<% if current_user.present? %>
-		<%= button_to "Like", report_like_path(:id => report.id), method: :get %>
-	<% end %>
-	<h6> Likes: <%= report.num_likes %> <h6>
-	<% if can? :delete, report %>
-		<%= button_to 'Elimina report', report, method: :delete, data: { confirm: "Vuoi davvero eliminare questo report?" } %>
-	<% end %>
-      </h5>
-      <div class="post-content"> 
-        <p><%= report.content %></p>
-	<hr>
-<!--
-      </div>
+<h3>
+  <%= link_to truncate(report.title, :length => 60), report_path(:id => report.id), method: :get %>
+</h3>
+<div class="report-info">
+  <h6>
+    Created at: <%= report.created_at %>, 
+    <div class="report-locality">
+      Locality: <%= link_to @report.locality, locality_path(@report.locality) %>
     </div>
+    </div>
+    <div class="posted-by">Posted by <%= report.user.username %></div>
+  </h6>
+  <h6>
+    Likes: <%= report.report_likes.count %>
+    Comments: <%= report.report_comments.count %>
+  </h6>
+  <div class="report-buttons">
+    <% if current_user.present? %>
+      <% if liked?(report.id) %>
+        <%= button_to "Dislike", report_dislike_path(:id => report.id), method: :get %>
+      <% elsif %>
+        <%= button_to "Like", report_like_path(:id => report.id), method: :get %>
+      <% end %>
+    <% end %>
+    <% if report.user.id == current_user.id or current_user.admin == true %>
+      <%= button_to 'Elimina report', report, method: :delete, data: { confirm: "Vuoi davvero eliminare questo report?" } %>
+    <% end %>
   </div>
 </div>
--->
+
+<div class="report-content"> 
+  <p><%= report.content %></p>
+  <hr>
+</div>

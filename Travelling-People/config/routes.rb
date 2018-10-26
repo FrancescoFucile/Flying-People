@@ -11,13 +11,17 @@ Rails.application.routes.draw do
 	resources :message_abuses, only:[:new, :create, :index]
 	
 	get 'users/search/:username', to: 'users#search', as: 'user_search'
-	get 'reports/:id/like', to: 'reports#like', as: 'report_like'
   get 'photos/:id/like', to: 'photos#like', as: 'photo_like'
   post 'photos/:id/comment', to: 'photos#comment', as: 'photo_comments'
   get 'locality/:name', to: 'locality#show', as: 'locality'
 
-	root :to => 'home#index'
+	root :to => 'home#index', as: 'root'
 
-    resources :reports
+	# Reports stuff
+	resources :reports do
+		resources :report_comments
+	end
+	get  'reports/:id/like', 				 to: 'reports#like',           as: 'report_like'
+	get  'reports/:id/dislike', 	   to: 'reports#dislike',        as: 'report_dislike'
 
 end

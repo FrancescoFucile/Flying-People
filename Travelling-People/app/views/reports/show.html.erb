@@ -1,0 +1,49 @@
+<h3>
+  <%= link_to truncate(@report.title, :length => 60), report_path(:id => @report.id), method: :get %>
+</h3>
+<div class="report-info">
+  <h6>
+    Created at: <%= @report.created_at %>, 
+    <div class="report-locality">
+      Locality: <%= link_to @report.locality, locality_path(@report.locality) %>
+                           <!-- '/locality/' + @report.locality %> -->
+    </div>
+    <div class="posted-by">Posted by <%= @report.user.username %></div>
+  </h6>
+  <h6>
+    Likes: <%= @report.report_likes.count %>
+    Comments: <%= @report.report_comments.count %>
+  </h6>
+  <div class="report-buttons">
+    <% if current_user.present? %>
+      <% if liked?(@report.id) %>
+        <%= button_to "Dislike", report_dislike_path(:id => @report.id), method: :get %>
+      <% elsif %>
+        <%= button_to "Like", report_like_path(:id => @report.id), method: :get %>
+      <% end %>
+    <% end %>
+    <% if @report.user.id == current_user.id %>
+      <%= button_to 'Elimina report', @report, method: :delete, data: { confirm: "Vuoi davvero eliminare questo report?" } %>
+    <% end %>
+  </div>
+</div>
+
+<div class="report-content"> 
+  <p><%= @report.content %></p>
+  <hr>
+</div>
+
+<ol>
+  <%= render  @report.report_comments %>
+</ol>
+
+<h5>Add a comment:</h5>
+<%= form_with(model: [ @report, @report.report_comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
