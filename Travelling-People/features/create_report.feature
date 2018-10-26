@@ -13,4 +13,4 @@ When I fill in "Title" with "my title"
 And I fill in "Locality" with "Rome"
 And I fill in "Report" with "lorem ipsum"
 And I press "Publish"
-Then I should be on the new report page with title "my title"
+Then I should be on the new report page
